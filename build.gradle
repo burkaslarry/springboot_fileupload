@@ -1,0 +1,33 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.1-SNAPSHOT'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.uploadexcel.flutter'
+version = '1.0.0-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+// Task to create the 'uploads' directory
+task createUploadsDir(type: Copy) {
+	from ''
+	into 'uploads'
+}
